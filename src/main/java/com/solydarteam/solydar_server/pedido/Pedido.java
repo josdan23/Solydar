@@ -87,12 +87,12 @@ public class Pedido {
         return builder.toString();
     }
 
-    public void agregarDetalle(
-            EspecificacionDePedido pedidoSolicitado,
-            int cantidasSolicitada,
-            TipoPedido tipoPedidoSolicitado){
 
-        listaPedidos.add(new DetallePedido(pedidoSolicitado, cantidasSolicitada, tipoPedidoSolicitado));
+    public void agregarItem(String descripcion, int cantidad, TipoPedido tipo, String urlImagen){
+
+        //todo: falta agregar el la imagen al detalle
+        DetallePedido detallePedido = new DetallePedido(descripcion, cantidad, tipo, urlImagen);
+        listaPedidos.add(detallePedido);
     }
 
 
@@ -105,7 +105,7 @@ public class Pedido {
         EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("Ropa para niños");
 
         for(int i = 0; i < 10; i++){
-            pedido.agregarDetalle(especificacionDePedido, i + 10, TipoPedido.TIPO_PRODUCTO);
+            pedido.agregarItem("Ropa para niños", i + 10, TipoPedido.TIPO_PRODUCTO, "http://urls");
         }
 
         System.out.println(pedido);

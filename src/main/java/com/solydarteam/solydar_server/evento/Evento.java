@@ -2,7 +2,6 @@ package com.solydarteam.solydar_server.evento;
 
 import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.donacion.Donacion;
-import com.solydarteam.solydar_server.pedido.EspecificacionDePedido;
 import com.solydarteam.solydar_server.pedido.EstadoPedido;
 import com.solydarteam.solydar_server.pedido.Pedido;
 import com.solydarteam.solydar_server.pedido.TipoPedido;
@@ -34,8 +33,18 @@ public class Evento {
         fechaCreacion = Calendar.getInstance().getTime();
         this.telefonos = new ArrayList<>();
         this.donacionesRecibidas = new ArrayList<>();
+        this.pedidoSolicitado = new Pedido();
     }
 
+    public Evento(String titulo, String descripcion, String aQuienAyuda, CategoriaEvento categoria, Date fechaDeRealizacion, Responsable responsable) {
+        this();
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.aquienAyuda = aQuienAyuda;
+        this.categoriaEvento = categoria;
+        this.fechaDeRealizacion = fechaDeRealizacion;
+        this.responsable = responsable;
+    }
 
     //<editor-fold desc="GETTERS AND SETTERS">
     public int getIdEvento() {
@@ -192,7 +201,7 @@ public class Evento {
         builder.append("\n\t<--------------------------------->");
 
         for(int i = 0; i < donacionesRecibidas.size(); i++){
-            builder.append("\n\n\t" + i + ")");
+            //builder.append("\n\n\t" + i + ")");
             builder.append(donacionesRecibidas.get(i));
         }
 
@@ -219,13 +228,14 @@ public class Evento {
         pedido.setIdPedido(3);
         pedido.setCodigoPedido(234234L);
 
-        EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("alimentos");
+        //EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("alimentos");
 
         for(int i = 0; i < 10; i++){
-            pedido.agregarDetalle(
-                    especificacionDePedido,
+            pedido.agregarItem(
+                    "alimentos",
                     i+3,
-                    TipoPedido.TIPO_PRODUCTO);
+                    TipoPedido.TIPO_PRODUCTO,
+                    "imagenurl");
         }
 
         evento.setPedidoSolicitado(pedido);

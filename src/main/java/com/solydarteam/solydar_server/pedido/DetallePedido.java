@@ -9,12 +9,19 @@ public class DetallePedido {
     public DetallePedido() {
         urlImagen = "";
     }
-    public DetallePedido(EspecificacionDePedido pedidoSolicitado, int cantidadSolicitada, TipoPedido tipo) {
+
+    public DetallePedido(String descripcion, int cantidadSolicitada, TipoPedido tipo) {
         this();
-        setpedidoSolicitado(pedidoSolicitado);
+        setpedidoSolicitado(new EspecificacionDePedido(descripcion));
         setCantidadSolicitada(cantidadSolicitada);
         setTipoPedido(tipo);
     }
+
+    public DetallePedido(String descripcion, int cantidadSolicitada, TipoPedido tipo, String urlImagen) {
+        this(descripcion, cantidadSolicitada, tipo);
+        setUrlImagen(urlImagen);
+    }
+
 
     //<editor-fold desc="GETTERS AND SETTERS">
     public EspecificacionDePedido getpedidoSolicitado() {
@@ -68,7 +75,5 @@ public class DetallePedido {
 
         return builder.toString();
     }
-
-
 
 }
