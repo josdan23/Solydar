@@ -24,28 +24,33 @@ public class EventoServices {
             String descripcion,
             String aQuienAyuda,
             CategoriaEvento categoriaEvento,
-            Date fechaDeRealizacion
-    ){
-        nuevoEvento = responsable.crearNuevoEvento(
-                titulo,
+            Date fechaDeRealizacion,
+            Responsable responsable
+    ) throws Exception{
+        nuevoEvento = organizacion.crearNuevoEvento(titulo,
                 descripcion,
                 aQuienAyuda,
                 categoriaEvento,
-                fechaDeRealizacion);
+                fechaDeRealizacion,
+                responsable);
+
     }
 
-    public void agregarItem(String descripcion, int cantidad, TipoPedido tipoPedido, String urlImagen){
-        nuevoEvento.getPedidoSolicitado().agregarItem(
-                descripcion,
-                cantidad,
-                tipoPedido,
-                urlImagen
-        );
+    public void agregarItemAlPedido(String descripcion, int cantidad, TipoPedido tipoPedido, String urlImagen) throws Exception{
+        if (nuevoEvento != null){
+
+            nuevoEvento.getPedidoSolicitado().agregarItem(
+                    descripcion,
+                    cantidad,
+                    tipoPedido,
+                    urlImagen);
+        }
+        throw new Exception("No se creo evento");
     }
 
     public void publicarEvento(){
         try {
-            organizacion.registrarEvento(nuevoEvento);
+            organizacion.registrarAMisEventos(nuevoEvento);
             System.out.println("SE REGISTRO UN EVENTO EN LA ORGANIZACION");
             System.out.println(nuevoEvento.toString());;
         } catch (Exception e) {

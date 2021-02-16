@@ -34,16 +34,7 @@ public class Evento {
         this.telefonos = new ArrayList<>();
         this.donacionesRecibidas = new ArrayList<>();
         this.pedidoSolicitado = new Pedido();
-    }
-
-    public Evento(String titulo, String descripcion, String aQuienAyuda, CategoriaEvento categoria, Date fechaDeRealizacion, Responsable responsable) {
-        this();
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.aquienAyuda = aQuienAyuda;
-        this.categoriaEvento = categoria;
-        this.fechaDeRealizacion = fechaDeRealizacion;
-        this.responsable = responsable;
+        this.estadoEvento = EstadoEvento.ESTADO_EVENTO_ACTIVO;
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
@@ -156,7 +147,6 @@ public class Evento {
         telefonos.add(telefono);
     }
 
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -224,7 +214,7 @@ public class Evento {
 
 
         Pedido pedido = new Pedido();
-        pedido.setEstadoPedido(EstadoPedido.PEDIDO_NO_COMPLETADO);
+        pedido.setEstadoPedido(EstadoPedido.PEDIDO_NO_CONCRETADO);
         pedido.setIdPedido(3);
         pedido.setCodigoPedido(234234L);
 

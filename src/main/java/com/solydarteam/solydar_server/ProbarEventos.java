@@ -17,18 +17,26 @@ public class ProbarEventos {
         organizacion.setCategoria(CategoriaOrganizacion.CATEGORIA_ORGANIZACION_1);
 
         Responsable responsable = new Responsable("Daniel Yapura");
-        //organizacion.agregarAdministrador(responsable);
+        organizacion.agregarAdministrador(responsable);
 
         EventoServices eventoServices = new EventoServices(organizacion, responsable);
-        eventoServices.crearEvento(
-                "Un sol para los niños",
-                "Evento a destinado a recolectar alimentos, ropa, juguetes para los niños",
-                "Niños y adolescentes",
-                CategoriaEvento.CATEGORIA_EVENTO_1,
-                Calendar.getInstance().getTime());
+        try {
+            eventoServices.crearEvento(
+                    "Un sol para los niños",
+                    "Evento a destinado a recolectar alimentos, ropa, juguetes para los niños",
+                    "Niños y adolescentes",
+                    CategoriaEvento.CATEGORIA_EVENTO_1,
+                    Calendar.getInstance().getTime(),
+                    responsable);
 
-        eventoServices.agregarItem("alintos", 2, TipoPedido.TIPO_PRODUCTO, null);
-        eventoServices.agregarItem("ropa", 100, TipoPedido.TIPO_PRODUCTO, "sin especificar");
+            eventoServices.agregarItemAlPedido("alintos", 2, TipoPedido.TIPO_PRODUCTO, null);
+            eventoServices.agregarItemAlPedido("ropa", 100, TipoPedido.TIPO_PRODUCTO, "sin especificar");
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         eventoServices.publicarEvento();
 
     }

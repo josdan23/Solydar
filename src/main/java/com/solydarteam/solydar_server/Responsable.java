@@ -1,10 +1,5 @@
 package com.solydarteam.solydar_server;
 
-import com.solydarteam.solydar_server.evento.CategoriaEvento;
-import com.solydarteam.solydar_server.evento.Evento;
-
-import java.util.Date;
-
 public class Responsable {
     private String nombre;
 
@@ -13,35 +8,18 @@ public class Responsable {
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
-    public String getNobre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNobre(String nobre) {
+    public void setNombre(String nobre) {
         this.nombre = nobre;
     }
     //</editor-fold>
 
     @Override
     public String toString() {
-        return String.format("\n\tNombre: %s", getNobre());
-    }
-
-    public Evento crearNuevoEvento(
-            String titulo,
-            String descripcion,
-            String aQuienAyuda,
-            CategoriaEvento categoria,
-            Date fechaDeRealizacion
-    ){
-        return new Evento(
-                titulo,
-                descripcion,
-                aQuienAyuda,
-                categoria,
-                fechaDeRealizacion,
-                this
-        );
+        return String.format("\tNombre del responsable: %s", getNombre());
     }
 
     public static void main(String[] args){

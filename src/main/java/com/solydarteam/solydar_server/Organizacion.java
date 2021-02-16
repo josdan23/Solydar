@@ -1,9 +1,10 @@
 package com.solydarteam.solydar_server;
 
+import com.solydarteam.solydar_server.evento.CategoriaEvento;
 import com.solydarteam.solydar_server.evento.Evento;
-import com.solydarteam.solydar_server.pedido.Pedido;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Organizacion {
@@ -53,7 +54,6 @@ public class Organizacion {
     }
     //</editor-fold>
 
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -82,14 +82,42 @@ public class Organizacion {
         administradores.add(unAdmin);
     }
 
-    public void registrarEvento(Evento evento) throws Exception {
+    public Evento crearNuevoEvento(String titulo,
+                                   String descripcion,
+                                   String aQuienAyuda,
+                                   CategoriaEvento categoriaEvento,
+                                   Date fechaDeRealizacion,
+                                   Responsable responsable) throws Exception {
+
+
+        if (isAdmin(responsable)){
+            Evento nuevoEvento = new Evento();
+            nuevoEvento.setTitulo(titulo);
+            nuevoEvento.setDescripcion(descripcion);
+            nuevoEvento.setAquienAyuda(aQuienAyuda);
+            nuevoEvento.setCategoriaEvento(categoriaEvento);
+            nuevoEvento.setFechaDeRealizacion(fechaDeRealizacion);
+            nuevoEvento.setResponsable(responsable);
+
+            return nuevoEvento;
+        }
+        throw new Exception("No es responsable de la organización");
+    }
+
+    public void registrarAMisEventos(Evento evento) throws Exception {
+        if (isAdmin(evento.getResponsable()))
+            misEventos.add(evento);
+
+        throw new Exception("El Responsable del evento no pertenece a la organización");
+    }
+
+    public boolean isAdmin(Responsable responsable){
         for (Responsable admin :
                 administradores) {
-            if (admin == evento.getResponsable()) {
-                misEventos.add(evento);
-                return;
-            }
+
+            if (admin == responsable)
+                return true;
         }
-        throw new Exception("El Responsable del evento no pertenece a la organización");
+        return false;
     }
 }

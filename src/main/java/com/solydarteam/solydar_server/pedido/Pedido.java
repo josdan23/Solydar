@@ -16,7 +16,7 @@ public class Pedido {
     public Pedido(){
         listaPedidos = new ArrayList<>();
         fechaDelPedido = Calendar.getInstance().getTime();
-        setEstadoPedido(EstadoPedido.PEDIDO_NO_COMPLETADO);
+        setEstadoPedido(EstadoPedido.PEDIDO_NO_CONCRETADO);
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
@@ -100,7 +100,7 @@ public class Pedido {
         Pedido pedido = new Pedido();
         pedido.setIdPedido(2);
         pedido.setCodigoPedido(290309201029L);
-        pedido.setEstadoPedido(EstadoPedido.PEDIDO_NO_COMPLETADO);
+        pedido.setEstadoPedido(EstadoPedido.PEDIDO_NO_CONCRETADO);
 
         EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("Ropa para niños");
 
