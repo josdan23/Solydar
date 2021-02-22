@@ -1,7 +1,9 @@
 package com.solydarteam.solydar_server.evento;
 
 import com.solydarteam.solydar_server.Responsable;
+import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.donacion.Donacion;
+import com.solydarteam.solydar_server.pedido.DetallePedido;
 import com.solydarteam.solydar_server.pedido.EstadoPedido;
 import com.solydarteam.solydar_server.pedido.Pedido;
 import com.solydarteam.solydar_server.pedido.TipoPedido;
@@ -147,6 +149,39 @@ public class Evento {
         telefonos.add(telefono);
     }
 
+    public void donar(Donacion donacion){
+
+        System.out.println("Una donación fue registrada en el evento");
+        //todo: notificar al responsable
+        getDonacionesRecibidas().add(donacion);
+
+        //calcular lo que falta
+        for (DetallePedido detallePedido : getPedidoSolicitado().getListaPedidos()){
+            for (DetalleDonacion detalleDonacion : donacion.getListaDonativos()){
+                if (detallePedido.getpedidoSolicitado() == detalleDonacion.getDonativoEntregado()){
+                    detallePedido.agregarCantidadEntregada(detalleDonacion.getCantidadDonada());
+                }
+            }
+        }
+
+        //verificar si el pedido del evento esta completo
+        if (estaCompleto())
+        {
+            pedidoSolicitado.setEstadoPedido(EstadoPedido.PEDIDO_CONCRETADO);
+            setEstadoEvento(EstadoEvento.ESTADO_EVENTO_FINALIZADO);
+        }
+    }
+
+    public boolean estaCompleto(){
+        for (DetallePedido detallePedido : pedidoSolicitado.getListaPedidos()) {
+            if(detallePedido.getCantidadFaltante() != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -187,8 +222,7 @@ public class Evento {
         builder.append(getPedidoSolicitado());
 
         builder.append("\n\n\tListado de donaciones realizadas:");
-        builder.append("\n\t>---------------------------------<");
-        builder.append("\n\t<--------------------------------->");
+
 
         for(int i = 0; i < donacionesRecibidas.size(); i++){
             //builder.append("\n\n\t" + i + ")");

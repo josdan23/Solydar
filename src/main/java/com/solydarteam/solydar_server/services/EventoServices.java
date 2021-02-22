@@ -45,7 +45,8 @@ public class EventoServices {
                     tipoPedido,
                     urlImagen);
         }
-        throw new Exception("No se creo evento");
+        else
+            throw new Exception("No se creo evento");
     }
 
     public void publicarEvento(){
@@ -57,4 +58,5 @@ public class EventoServices {
             System.out.println(e.getMessage());
         }
     }
+
 }

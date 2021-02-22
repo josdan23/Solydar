@@ -80,27 +80,27 @@ public class Donacion {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("\n------->DETALLE DE DONACIÓN<-------");
-        builder.append("\n\tId Donación: ");
+        builder.append("\n\t------->DETALLE DE DONACIÓN<-------");
+        builder.append("\n\t| Id Donación: ");
         builder.append(getIdDonacion());
-        builder.append("\n\tFecha de creación: ");
+        builder.append("\n\t| Fecha de creación: ");
         builder.append(getfechaCreacion());
-        builder.append("\n\tEstado de la donación: ");
+        builder.append("\n\t| Estado de la donación: ");
         builder.append(getEstado());
-        builder.append("\n\tFecha de entrega: ");
+        builder.append("\n\t| Fecha de entrega: ");
         builder.append(getFechaEntrega());
-        builder.append("\n\tDonante: ");
+        builder.append("\n\t| Donante: ");
         builder.append(getDonante());
 
-        builder.append("\n\n\tListado de donativos:");
-        builder.append("\n\t---------------------");
+        builder.append("\n\n\t| Listado de donativos:");
+        builder.append("\n\t| ---------------------");
 
         for(int i = 0; i < listaDonativos.size(); i++){
-            builder.append("\n\n\t" + i + ")");
+            builder.append("\n\n\t| " + i + ")");
             builder.append(listaDonativos.get(i));
         }
 
-        builder.append("\n\n------->FIN DETALLE DE DONACIÓN<-------");
+        builder.append("\n\n\t|------->FIN DETALLE DE DONACIÓN<-------");
         return builder.toString();
     }
 
@@ -109,8 +109,6 @@ public class Donacion {
         EspecificacionDePedido producto = new EspecificacionDePedido("Alimentos");
         Donacion donacion = new Donacion();
         donacion.setIdDonacion(2);
-        donacion.setfechaCreacion(Calendar.getInstance().getTime());
-        donacion.setEstado(EstadoDonacion.DONACION_CONFIRMADA);
         donacion.setFechaEntrega(Calendar.getInstance().getTime());
 
 

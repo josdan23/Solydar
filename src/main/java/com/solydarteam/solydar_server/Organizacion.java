@@ -107,8 +107,8 @@ public class Organizacion {
     public void registrarAMisEventos(Evento evento) throws Exception {
         if (isAdmin(evento.getResponsable()))
             misEventos.add(evento);
-
-        throw new Exception("El Responsable del evento no pertenece a la organización");
+        else
+            throw new Exception("El Responsable del evento no pertenece a la organización");
     }
 
     public boolean isAdmin(Responsable responsable){
