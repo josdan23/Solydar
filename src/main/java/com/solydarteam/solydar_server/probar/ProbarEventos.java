@@ -1,5 +1,8 @@
-package com.solydarteam.solydar_server;
+package com.solydarteam.solydar_server.probar;
 
+import com.solydarteam.solydar_server.CategoriaOrganizacion;
+import com.solydarteam.solydar_server.Organizacion;
+import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.donacion.Donacion;
 import com.solydarteam.solydar_server.evento.CategoriaEvento;
 import com.solydarteam.solydar_server.evento.Evento;

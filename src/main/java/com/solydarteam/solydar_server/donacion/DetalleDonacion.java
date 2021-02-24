@@ -1,14 +1,21 @@
 package com.solydarteam.solydar_server.donacion;
 
-import com.solydarteam.solydar_server.pedido.EspecificacionDePedido;
+import com.solydarteam.solydar_server.pedido.ItemSolicitado;
+
+/*
+    FUTURO: agregar un campo de observación, esto le permitiria al donante
+    explicar algo relativo al objeto donado. Por ejemplo: modo de uso,
+    estado del objeto, horarios de atención, etc.
+ */
+
 
 public class DetalleDonacion {
-    private EspecificacionDePedido donativoEntregado;
+    private ItemSolicitado itemDonado;
     private int cantidadDonada;
 
-    public DetalleDonacion(EspecificacionDePedido donativoEntregado, int cantidadDonada) {
+    public DetalleDonacion(ItemSolicitado itemDonado, int cantidadDonada) {
         this.cantidadDonada = cantidadDonada;
-        this.donativoEntregado = donativoEntregado;
+        this.itemDonado = itemDonado;
     }
 
     //<editor-fold desc="SOLO GETTERS">
@@ -16,8 +23,8 @@ public class DetalleDonacion {
         return cantidadDonada;
     }
 
-    public EspecificacionDePedido getDonativoEntregado() {
-        return donativoEntregado;
+    public ItemSolicitado getItemDonado() {
+        return itemDonado;
     }
 
     //</editor-fold>
@@ -26,7 +33,7 @@ public class DetalleDonacion {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("\n\tLo que dona: ");
-        builder.append(getDonativoEntregado());
+        builder.append(getItemDonado());
         builder.append("\n\tCantidad donada: ");
         builder.append(getCantidadDonada());
 

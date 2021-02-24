@@ -1,7 +1,7 @@
 package com.solydarteam.solydar_server.pedido;
 
 public class DetallePedido {
-    private EspecificacionDePedido pedidoSolicitado;
+    private ItemSolicitado itemSolicitado;
     private int cantidadSolicitada;
     private TipoPedido tipoPedido;
     private String urlImagen;
@@ -15,7 +15,7 @@ public class DetallePedido {
 
     public DetallePedido(String descripcion, int cantidadSolicitada, TipoPedido tipo) {
         this();
-        setpedidoSolicitado(new EspecificacionDePedido(descripcion));
+        setItemSolicitado(new ItemSolicitado(descripcion));
         setCantidadSolicitada(cantidadSolicitada);
         setTipoPedido(tipo);
     }
@@ -42,12 +42,12 @@ public class DetallePedido {
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
-    public EspecificacionDePedido getpedidoSolicitado() {
-        return pedidoSolicitado;
+    public ItemSolicitado getItemSolicitado() {
+        return itemSolicitado;
     }
 
-    public void setpedidoSolicitado(EspecificacionDePedido pedidoSolicitado) {
-        this.pedidoSolicitado = pedidoSolicitado;
+    public void setItemSolicitado(ItemSolicitado itemSolicitado) {
+        this.itemSolicitado = itemSolicitado;
     }
 
     public int getCantidadSolicitada() {
@@ -80,7 +80,7 @@ public class DetallePedido {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("\n\tNecesita: ");
-        builder.append(getpedidoSolicitado());
+        builder.append(getItemSolicitado());
 
         builder.append("\n\tTipo de pedido: ");
         builder.append(getTipoPedido());

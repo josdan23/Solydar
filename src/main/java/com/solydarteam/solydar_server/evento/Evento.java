@@ -149,16 +149,16 @@ public class Evento {
         telefonos.add(telefono);
     }
 
-    public void donar(Donacion donacion){
+    public void registrarDonacion(Donacion donacion){
 
-        System.out.println("Una donación fue registrada en el evento");
-        //todo: notificar al responsable
         getDonacionesRecibidas().add(donacion);
+        System.out.println("DONACIÓN REGISTRADA EN EL EVENTO");
+        //todo: notificar al responsable
 
         //calcular lo que falta
         for (DetallePedido detallePedido : getPedidoSolicitado().getListaPedidos()){
             for (DetalleDonacion detalleDonacion : donacion.getListaDonativos()){
-                if (detallePedido.getpedidoSolicitado() == detalleDonacion.getDonativoEntregado()){
+                if (detallePedido.getItemSolicitado() == detalleDonacion.getItemDonado()){
                     detallePedido.agregarCantidadEntregada(detalleDonacion.getCantidadDonada());
                 }
             }
@@ -180,7 +180,6 @@ public class Evento {
         }
         return true;
     }
-
 
     @Override
     public String toString() {

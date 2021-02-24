@@ -1,9 +1,9 @@
 package com.solydarteam.solydar_server.pedido;
 
-public class EspecificacionDePedido {
+public class ItemSolicitado {
     private String descripcion;
 
-    public EspecificacionDePedido(String descripcion) {
+    public ItemSolicitado(String descripcion) {
         this.descripcion = descripcion;
     }
 

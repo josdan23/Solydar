@@ -1,11 +1,14 @@
-package com.solydarteam.solydar_server;
+package com.solydarteam.solydar_server.probar;
 
 import com.solydarteam.solydar_server.donacion.Donante;
 import com.solydarteam.solydar_server.evento.Evento;
 import com.solydarteam.solydar_server.pedido.DetallePedido;
+import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 import com.solydarteam.solydar_server.pedido.Pedido;
 import com.solydarteam.solydar_server.pedido.TipoPedido;
 import com.solydarteam.solydar_server.services.DonacionServices;
+
+import java.util.HashMap;
 
 public class probarDonaciones {
 
@@ -14,7 +17,6 @@ public class probarDonaciones {
         DonacionServices services = new DonacionServices();
 
         Donante donante = new Donante();
-        services.iniciarDonacion(donante);
 
         Evento evento = new Evento();
         Pedido pedido = new Pedido();
@@ -24,6 +26,24 @@ public class probarDonaciones {
         evento.setPedidoSolicitado(pedido);
         System.out.println(evento);
 
+
+        HashMap<ItemSolicitado, Integer> listaDeDonativos = new HashMap<>();
+
+        for(DetallePedido detallePedido : pedido.getListaPedidos()){
+            listaDeDonativos.put(detallePedido.getItemSolicitado(), 2);
+        }
+
+        services.donarAEvento(donante, listaDeDonativos, evento);
+        System.out.println(evento);
+
+        HashMap<ItemSolicitado, Integer> listaDeDonativos2 = new HashMap<>();
+        listaDeDonativos2.put(pedido.getListaPedidos().get(0).getItemSolicitado(), 2);
+        services.donarAEvento(donante,listaDeDonativos2, evento);
+        System.out.println(evento);
+
+     /*
+
+        services.iniciarDonacion(donante);
 
         for (DetallePedido detallePedido : evento.getPedidoSolicitado().getListaPedidos() ){
             services.agregarDonativo(detallePedido.getpedidoSolicitado(), 1);
@@ -42,7 +62,7 @@ public class probarDonaciones {
         }
 
         services.confirmarDonacion(evento);
-        System.out.println(evento);
+        System.out.println(evento);*/
     }
 
 }

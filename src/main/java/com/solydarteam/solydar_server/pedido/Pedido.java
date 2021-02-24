@@ -95,6 +95,14 @@ public class Pedido {
         listaPedidos.add(detallePedido);
     }
 
+    public boolean estaEnLaLista(ItemSolicitado item){
+        for(DetallePedido unaLineaDelDetalle : listaPedidos){
+            if (item == unaLineaDelDetalle.getItemSolicitado())
+                return true;
+        }
+        return false;
+    }
+
 
     public static void main(String[] args){
         Pedido pedido = new Pedido();
@@ -102,7 +110,7 @@ public class Pedido {
         pedido.setCodigoPedido(290309201029L);
         pedido.setEstadoPedido(EstadoPedido.PEDIDO_NO_CONCRETADO);
 
-        EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("Ropa para niños");
+        ItemSolicitado itemSolicitado = new ItemSolicitado("Ropa para niños");
 
         for(int i = 0; i < 10; i++){
             pedido.agregarItem("Ropa para niños", i + 10, TipoPedido.TIPO_PRODUCTO, "http://urls");

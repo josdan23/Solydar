@@ -1,6 +1,6 @@
 package com.solydarteam.solydar_server.donacion;
 
-import com.solydarteam.solydar_server.pedido.EspecificacionDePedido;
+import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,17 +9,22 @@ import java.util.List;
 
 public class Donacion {
     private int idDonacion;
+    //todo: agregar código de donación
     private Date fechaCreacion;
     private EstadoDonacion estado;
     private Date fechaEntrega;
     private Donante donante;
     private List<DetalleDonacion> listaDonativos;
 
-
-    public Donacion(){
+    protected Donacion(){
         fechaCreacion = Calendar.getInstance().getTime();
         estado = EstadoDonacion.DONACION_EN_ESPERA;
         listaDonativos = new ArrayList<>();
+    }
+
+    protected Donacion(Donante donante) throws Exception {
+        this();
+        setDonante(donante);
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
@@ -59,23 +64,33 @@ public class Donacion {
         return donante;
     }
 
-    public void setDonante(Donante donante) {
-        this.donante = donante;
+    public void setDonante(Donante donante) throws Exception {
+        if (donante != null)
+            this.donante = donante;
+        else
+            throw new Exception("El Donante no es valido");
     }
 
     public List<DetalleDonacion> getListaDonativos() {
         return listaDonativos;
     }
 
-    public void setListaDonativos(List<DetalleDonacion> listaDonativos) {
-        this.listaDonativos = listaDonativos;
+    public void setListaDonativos(List<DetalleDonacion> listaDonativos) throws Exception {
+        if (listaDonativos != null)
+            this.listaDonativos = listaDonativos;
+        else
+            throw new Exception("La lista de donativos es null");
     }
     //</editor-fold>
 
-    public void agregarDonativo(EspecificacionDePedido donativo, int cantidadDonada) {
-        listaDonativos.add(new DetalleDonacion(donativo, cantidadDonada));
+    public void agregarDonativo(ItemSolicitado donativo, int cantidadDonada) throws Exception {
+        if (donativo == null)
+            throw new Exception("El Donativo no es valido");
+        else if(cantidadDonada < 1 )
+            throw new Exception("Cantidad donada insuficiente: cantida menor a 1");
+        else
+            listaDonativos.add(new DetalleDonacion(donativo, cantidadDonada));
     }
-
 
     @Override
     public String toString() {
@@ -104,18 +119,27 @@ public class Donacion {
         return builder.toString();
     }
 
-
-    public static void main(String[] args){
-        EspecificacionDePedido producto = new EspecificacionDePedido("Alimentos");
+    /*public static void main(String[] args){
+       EspecificacionDePedido producto = new EspecificacionDePedido("Alimentos");
         Donacion donacion = new Donacion();
         donacion.setIdDonacion(2);
         donacion.setFechaEntrega(Calendar.getInstance().getTime());
 
 
         for (int i = 0; i < 10; ++i){
-            donacion.agregarDonativo(producto, i);
+            try {
+                donacion.agregarDonativo(null, i);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         System.out.println(donacion);
-    }
+
+        try {
+            Donacion donacion = new Donacion(null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }*/
 }
