@@ -18,7 +18,7 @@ public class Donacion {
 
     protected Donacion(){
         fechaCreacion = Calendar.getInstance().getTime();
-        estado = EstadoDonacion.DONACION_EN_ESPERA;
+        estado = EstadoDonacion.DONACION_CREADA;
         listaDonativos = new ArrayList<>();
     }
 
