@@ -2,8 +2,6 @@ package com.solydarteam.solydar_server.probar;
 
 import com.solydarteam.solydar_server.Ciudadano;
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
-import com.solydarteam.solydar_server.donacion.Donador;
-import com.solydarteam.solydar_server.donacion.Donante;
 import com.solydarteam.solydar_server.evento.Evento;
 import com.solydarteam.solydar_server.pedido.DetallePedido;
 import com.solydarteam.solydar_server.pedido.ItemSolicitado;
