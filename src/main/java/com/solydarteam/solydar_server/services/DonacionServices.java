@@ -1,13 +1,9 @@
 package com.solydarteam.solydar_server.services;
 
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
-import com.solydarteam.solydar_server.donacion.Donacion;
 import com.solydarteam.solydar_server.donacion.Donador;
-import com.solydarteam.solydar_server.donacion.Donante;
 import com.solydarteam.solydar_server.evento.Evento;
-import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class DonacionServices {
