@@ -32,7 +32,7 @@ public class Ciudadano implements Donador {
     public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
 
         try {
-            if (evento.getPedidoSolicitado().esListaDeDonacionesConfirmada(listaDeDonativos)){
+            if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){
                 Donacion donacion = new Donacion(this);
                 donacion.setListaDonativos(listaDeDonativos);
                 evento.registrarDonacion(donacion);

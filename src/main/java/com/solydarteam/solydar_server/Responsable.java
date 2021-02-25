@@ -36,7 +36,7 @@ public class Responsable implements Donador {
 
     @Override
     public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
-        if (evento.getPedidoSolicitado().esListaDeDonacionesConfirmada(listaDeDonativos)){
+        if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){
             try {
                 Donacion nuevaDonacion = new Donacion(this);
                 nuevaDonacion.setListaDonativos(listaDeDonativos);
