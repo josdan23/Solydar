@@ -7,8 +7,12 @@ import com.solydarteam.solydar_server.evento.Evento;
 
 import java.util.List;
 
-public class Responsable implements Donador {
-    private String nombre;
+public class Responsable extends Ciudadano {
+
+    public Responsable(String nombre){
+        super(nombre);
+    }
+    /*private String nombre;
 
     public Responsable(String nombre){
         this.nombre = nombre;
@@ -23,7 +27,7 @@ public class Responsable implements Donador {
         this.nombre = nobre;
     }
     //</editor-fold>
-
+*/
     @Override
     public String toString() {
         return String.format("\tNombre del responsable: %s", getNombre());
@@ -34,7 +38,7 @@ public class Responsable implements Donador {
         System.out.println(responsable);
     }
 
-    @Override
+   /* @Override
     public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
         try {
             if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){
@@ -49,5 +53,5 @@ public class Responsable implements Donador {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 }

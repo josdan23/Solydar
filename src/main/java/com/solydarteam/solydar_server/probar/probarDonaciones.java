@@ -1,6 +1,7 @@
 package com.solydarteam.solydar_server.probar;
 
 import com.solydarteam.solydar_server.Ciudadano;
+import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.evento.Evento;
 import com.solydarteam.solydar_server.pedido.DetallePedido;
@@ -21,7 +22,7 @@ public class probarDonaciones {
 
         //Donador donante = new Donante();
 
-        Ciudadano donante = new Ciudadano("Daniel");
+        Ciudadano donante = new Responsable("Daniel");
 
 
         Evento evento = new Evento();
