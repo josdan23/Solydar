@@ -39,7 +39,7 @@ public class EventoServices {
     public void agregarItemAlPedido(String descripcion, int cantidad, TipoPedido tipoPedido, String urlImagen) throws Exception{
         if (nuevoEvento != null){
 
-            nuevoEvento.getPedidoSolicitado().agregarItem(
+            nuevoEvento.getPedidoSolicitado().agregarItemAlPedido(
                     descripcion,
                     cantidad,
                     tipoPedido,

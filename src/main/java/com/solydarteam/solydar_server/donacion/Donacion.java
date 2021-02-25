@@ -13,7 +13,7 @@ public class Donacion {
     private Date fechaCreacion;
     private EstadoDonacion estado;
     private Date fechaEntrega;
-    private Donante donante;
+    private Donador donante;
     private List<DetalleDonacion> listaDonativos;
 
     protected Donacion(){
@@ -22,7 +22,7 @@ public class Donacion {
         listaDonativos = new ArrayList<>();
     }
 
-    protected Donacion(Donante donante) throws Exception {
+    public Donacion(Donador donante) throws Exception {
         this();
         setDonante(donante);
     }
@@ -60,11 +60,11 @@ public class Donacion {
         this.fechaEntrega = fechaEntrega;
     }
 
-    public Donante getDonante() {
+    public Donador getDonante() {
         return donante;
     }
 
-    public void setDonante(Donante donante) throws Exception {
+    public void setDonante(Donador donante) throws Exception {
         if (donante != null)
             this.donante = donante;
         else

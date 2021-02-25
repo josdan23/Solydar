@@ -1,5 +1,7 @@
 package com.solydarteam.solydar_server.pedido;
 
+import com.solydarteam.solydar_server.donacion.DetalleDonacion;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -88,19 +90,28 @@ public class Pedido {
     }
 
 
-    public void agregarItem(String descripcion, int cantidad, TipoPedido tipo, String urlImagen){
+    public void agregarItemAlPedido(String descripcion, int cantidad, TipoPedido tipo, String urlImagen){
 
         //todo: falta agregar el la imagen al detalle
         DetallePedido detallePedido = new DetallePedido(descripcion, cantidad, tipo, urlImagen);
         listaPedidos.add(detallePedido);
     }
 
-    public boolean estaEnLaLista(ItemSolicitado item){
+    public boolean estaItemEnListaDePedidos(ItemSolicitado item){
         for(DetallePedido unaLineaDelDetalle : listaPedidos){
             if (item == unaLineaDelDetalle.getItemSolicitado())
                 return true;
         }
         return false;
+    }
+
+    //todo: Cambiar el nombre del metodo
+    public boolean esListaDeDonacionesConfirmada(List<DetalleDonacion> listaDeDonaciones){
+        for(DetalleDonacion unItemDonado : listaDeDonaciones){
+            if(!estaItemEnListaDePedidos(unItemDonado.getItemDonado()))
+                return false;
+        }
+        return true;
     }
 
 
@@ -113,7 +124,7 @@ public class Pedido {
         ItemSolicitado itemSolicitado = new ItemSolicitado("Ropa para niños");
 
         for(int i = 0; i < 10; i++){
-            pedido.agregarItem("Ropa para niños", i + 10, TipoPedido.TIPO_PRODUCTO, "http://urls");
+            pedido.agregarItemAlPedido("Ropa para niños", i + 10, TipoPedido.TIPO_PRODUCTO, "http://urls");
         }
 
         System.out.println(pedido);

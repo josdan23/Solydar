@@ -1,14 +1,10 @@
 package com.solydarteam.solydar_server.donacion;
 
 import com.solydarteam.solydar_server.evento.Evento;
-import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Donante {
+public class Donante implements Donador {
     private String nombre = "Daniel es el donante";
 
     @Override
@@ -16,25 +12,13 @@ public class Donante {
         return String.format("Donante: %s", nombre);
     }
 
-/*    public Donacion crearDonacion(){
-        Donacion nuevaDonacion = null;
-        try {
-            nuevaDonacion = new Donacion(this);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        //nuevaDonacion.setDonante(this);
+    //LISTA DE DONACIÓN ES UN HASHMAP
+   /* public void donar(Evento evento, HashMap<ItemSolicitado, Integer> listaDeDonativos){
 
-        System.out.println(String.format("El donante: %s ha creado una donación", this.nombre));
-        return nuevaDonacion;
-    }*/
-
-    public void donar(Evento evento, HashMap<ItemSolicitado, Integer> listaDeDonativos){
-
-        /*
+        *//*
             Crea una donación, agrega la lista de donativos confirmada y luego
             registra las donaciones en el evento.
-         */
+         *//*
         try {
             Donacion donacion = new Donacion(this);
 
@@ -49,8 +33,26 @@ public class Donante {
             System.out.println(e.getMessage());
         }
     }
+*/
+    //LISTA DE DONACIÓN ES UN ARRAYLIST
+    @Override
+    public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
 
-    private List<DetalleDonacion> getListaDeDonativosConfirmada(Evento evento, HashMap<ItemSolicitado, Integer> listaDeDonativos) {
+        if (evento.getPedidoSolicitado().esListaDeDonacionesConfirmada(listaDeDonativos)){
+            try {
+                Donacion nuevaDonacion = new Donacion(this);
+                nuevaDonacion.setListaDonativos(listaDeDonativos);
+                evento.registrarDonacion(nuevaDonacion);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else
+            System.out.println("Hay donaciones que no corresponden a lo que se pide");
+    }
+
+   /* private List<DetalleDonacion> getListaDeDonativosConfirmada(Evento evento, HashMap<ItemSolicitado, Integer> listaDeDonativos) {
         List<DetalleDonacion> detalleDonacionsList = new ArrayList<>();
 
         //Recorrer cada item de la lista de donativos
@@ -61,6 +63,6 @@ public class Donante {
             }
         }
         return detalleDonacionsList;
-    }
+    }*/
 
 }

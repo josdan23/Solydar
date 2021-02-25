@@ -1,11 +1,14 @@
 package com.solydarteam.solydar_server.services;
 
+import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.donacion.Donacion;
+import com.solydarteam.solydar_server.donacion.Donador;
 import com.solydarteam.solydar_server.donacion.Donante;
 import com.solydarteam.solydar_server.evento.Evento;
 import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class DonacionServices {
 
@@ -24,11 +27,19 @@ public class DonacionServices {
         evento.registrarDonacion(donacion);
     }*/
 
+/*
     //Todo: el donante lo debería recuperar de la sesion actual
-    public void donarAEvento(Donante donante,
-                                  HashMap<ItemSolicitado, Integer> listaDeDonativos,
-                                  Evento evento){
+    public void donarAEvento(Donador donante,
+                             HashMap<ItemSolicitado, Integer> listaDeDonativos,
+                             Evento evento){
 
+        donante.donar(evento, listaDeDonativos);
+    }
+*/
+
+    public void donarAEvento(Donador donante,
+                             List<DetalleDonacion> listaDeDonativos,
+                             Evento evento) {
         donante.donar(evento, listaDeDonativos);
     }
 

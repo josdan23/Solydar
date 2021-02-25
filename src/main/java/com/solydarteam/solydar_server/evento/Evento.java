@@ -153,9 +153,25 @@ public class Evento {
 
         getDonacionesRecibidas().add(donacion);
         System.out.println("DONACIÓN REGISTRADA EN EL EVENTO");
-        //todo: notificar al responsable
+        //todo: notificar a los responsables para aprobar donacion
 
         //calcular lo que falta
+        calcularDonacionesFaltantes(donacion);
+
+        //verificar si el pedido del evento esta completo
+        verificarPedidoConcreto();
+
+    }
+
+    private void verificarPedidoConcreto(){
+        if (esPedidoCompleto())
+        {
+            pedidoSolicitado.setEstadoPedido(EstadoPedido.PEDIDO_CONCRETADO);
+            setEstadoEvento(EstadoEvento.ESTADO_EVENTO_FINALIZADO);
+        }
+    }
+
+    private void calcularDonacionesFaltantes(Donacion donacion){
         for (DetallePedido detallePedido : getPedidoSolicitado().getListaPedidos()){
             for (DetalleDonacion detalleDonacion : donacion.getListaDonativos()){
                 if (detallePedido.getItemSolicitado() == detalleDonacion.getItemDonado()){
@@ -163,16 +179,9 @@ public class Evento {
                 }
             }
         }
-
-        //verificar si el pedido del evento esta completo
-        if (estaCompleto())
-        {
-            pedidoSolicitado.setEstadoPedido(EstadoPedido.PEDIDO_CONCRETADO);
-            setEstadoEvento(EstadoEvento.ESTADO_EVENTO_FINALIZADO);
-        }
     }
 
-    public boolean estaCompleto(){
+    public boolean esPedidoCompleto(){
         for (DetallePedido detallePedido : pedidoSolicitado.getListaPedidos()) {
             if(detallePedido.getCantidadFaltante() != 0){
                 return false;
@@ -254,7 +263,7 @@ public class Evento {
         //EspecificacionDePedido especificacionDePedido = new EspecificacionDePedido("alimentos");
 
         for(int i = 0; i < 10; i++){
-            pedido.agregarItem(
+            pedido.agregarItemAlPedido(
                     "alimentos",
                     i+3,
                     TipoPedido.TIPO_PRODUCTO,
