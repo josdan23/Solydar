@@ -36,17 +36,18 @@ public class Responsable implements Donador {
 
     @Override
     public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
-        if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){
-            try {
+        try {
+            if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){
                 Donacion nuevaDonacion = new Donacion(this);
                 nuevaDonacion.setListaDonativos(listaDeDonativos);
                 evento.registrarDonacion(nuevaDonacion);
-
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
             }
+            else
+                System.out.println("Hay donaciones que no corresponden a lo que se pide");
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        else
-            System.out.println("Hay donaciones que no corresponden a lo que se pide");
     }
 }
