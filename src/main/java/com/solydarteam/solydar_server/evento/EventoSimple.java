@@ -3,6 +3,7 @@ package com.solydarteam.solydar_server.evento;
 import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.donacion.Donacion;
+import com.solydarteam.solydar_server.donacion.EstadoDonacion;
 import com.solydarteam.solydar_server.pedido.DetallePedido;
 import com.solydarteam.solydar_server.pedido.EstadoPedido;
 import com.solydarteam.solydar_server.pedido.Pedido;
@@ -150,7 +151,7 @@ public class EventoSimple {
     }
 
     public void registrarDonacion(Donacion donacion){
-
+        donacion.setEstado(EstadoDonacion.DONACION_EN_ESPERA);
         getDonacionesRecibidas().add(donacion);
         System.out.println("DONACIÓN REGISTRADA EN EL EVENTO");
         //todo: notificar a los responsables para aprobar donacion
