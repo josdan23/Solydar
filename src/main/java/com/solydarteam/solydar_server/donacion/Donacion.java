@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Donacion {
     private int idDonacion;
-    //todo: agregar código de donación
+    private int codigoDonacion;
     private Date fechaCreacion;
     private EstadoDonacion estado;
     private Date fechaEntrega;
@@ -28,6 +28,15 @@ public class Donacion {
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
+
+    public int getCodigoDonacion() {
+        return codigoDonacion;
+    }
+
+    public void setCodigoDonacion(int codigoDonacion) {
+        this.codigoDonacion = codigoDonacion;
+    }
+
     public int getIdDonacion() {
         return idDonacion;
     }
