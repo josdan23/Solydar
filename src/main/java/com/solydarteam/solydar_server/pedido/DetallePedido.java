@@ -2,10 +2,10 @@ package com.solydarteam.solydar_server.pedido;
 
 public class DetallePedido {
     private ItemSolicitado itemSolicitado;
-    private int cantidadSolicitada;
     private TipoPedido tipoPedido;
     private String urlImagen;
 
+    private int cantidadSolicitada;
     private int cantidadEntregada;
 
 
@@ -23,22 +23,6 @@ public class DetallePedido {
     public DetallePedido(String descripcion, int cantidadSolicitada, TipoPedido tipo, String urlImagen) {
         this(descripcion, cantidadSolicitada, tipo);
         setUrlImagen(urlImagen);
-    }
-
-    public void agregarCantidadEntregada(int cantidadEntregada){
-        this.cantidadEntregada += cantidadEntregada;
-    }
-
-    public int getCantidadEntregada(){
-        return cantidadEntregada;
-    }
-
-    public int getCantidadFaltante(){
-        int aux =  cantidadSolicitada - cantidadEntregada;
-
-        if (aux <= 0)
-            return 0;
-        return aux;
     }
 
     //<editor-fold desc="GETTERS AND SETTERS">
@@ -74,7 +58,15 @@ public class DetallePedido {
         this.urlImagen = urlImagen;
     }
 
-    //</editor-fold>
+    public void setCantidadEntregada(int cantidadEntregada) {
+        this.cantidadEntregada = cantidadEntregada;
+    }
+
+    public int getCantidadEntregada(){
+        return cantidadEntregada;
+    }
+
+//</editor-fold>
 
     @Override
     public String toString() {
@@ -96,10 +88,23 @@ public class DetallePedido {
         builder.append(getCantidadEntregada());
 
         builder.append("\n\tCantidad faltante: ");
-        builder.append(getCantidadFaltante());
+        builder.append(calcularCantidadFaltante());
 
 
         return builder.toString();
+    }
+
+
+    public void sumarCantidadEntregada(int cantidadEntregada){
+        this.cantidadEntregada += cantidadEntregada;
+    }
+
+    public int calcularCantidadFaltante(){
+        int cantFaltante =  cantidadSolicitada - cantidadEntregada;
+
+        if (cantFaltante <= 0)
+            return 0;
+        return cantFaltante;
     }
 
 }

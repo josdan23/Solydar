@@ -105,7 +105,6 @@ public class Pedido {
         return false;
     }
 
-    //todo: Cambiar el nombre del metodo
     public boolean esListaDeDonacionesValida(List<DetalleDonacion> listaDeDonaciones){
         for(DetalleDonacion unItemDonado : listaDeDonaciones){
             if(!estaItemEnListaDePedidos(unItemDonado.getItemDonado()))

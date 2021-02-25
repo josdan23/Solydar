@@ -1,7 +1,5 @@
 package com.solydarteam.solydar_server.pedido;
 
-
-//todo: modificar los nombres de los estados de un pedido.
 public enum EstadoPedido {
     PEDIDO_CONCRETADO,
     PEDIDO_NO_CONCRETADO,

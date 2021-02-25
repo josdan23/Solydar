@@ -175,7 +175,7 @@ public class Evento {
         for (DetallePedido detallePedido : getPedidoSolicitado().getListaPedidos()){
             for (DetalleDonacion detalleDonacion : donacion.getListaDonativos()){
                 if (detallePedido.getItemSolicitado() == detalleDonacion.getItemDonado()){
-                    detallePedido.agregarCantidadEntregada(detalleDonacion.getCantidadDonada());
+                    detallePedido.sumarCantidadEntregada(detalleDonacion.getCantidadDonada());
                 }
             }
         }
@@ -183,7 +183,7 @@ public class Evento {
 
     public boolean esPedidoCompleto(){
         for (DetallePedido detallePedido : pedidoSolicitado.getListaPedidos()) {
-            if(detallePedido.getCantidadFaltante() != 0){
+            if(detallePedido.calcularCantidadFaltante() != 0){
                 return false;
             }
         }
