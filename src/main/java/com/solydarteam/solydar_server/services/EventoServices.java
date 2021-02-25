@@ -51,7 +51,7 @@ public class EventoServices {
 
     public void publicarEvento(){
         try {
-            organizacion.registrarAMisEventos(nuevoEvento);
+            organizacion.registrarEnMisEventos(nuevoEvento);
             System.out.println("SE REGISTRO UN EVENTO EN LA ORGANIZACION");
             System.out.println(nuevoEvento.toString());;
         } catch (Exception e) {
