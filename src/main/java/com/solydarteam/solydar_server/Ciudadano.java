@@ -3,7 +3,7 @@ package com.solydarteam.solydar_server;
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.donacion.Donacion;
 import com.solydarteam.solydar_server.donacion.Donador;
-import com.solydarteam.solydar_server.evento.Evento;
+import com.solydarteam.solydar_server.evento.EventoSimple;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class Ciudadano implements Donador {
     }
 
     @Override
-    public void donar(Evento evento, List<DetalleDonacion> listaDeDonativos) {
+    public void donar(EventoSimple evento, List<DetalleDonacion> listaDeDonativos) {
 
         try {
             if (evento.getPedidoSolicitado().esListaDeDonacionesValida(listaDeDonativos)){

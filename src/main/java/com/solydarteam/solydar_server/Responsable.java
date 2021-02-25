@@ -1,12 +1,5 @@
 package com.solydarteam.solydar_server;
 
-import com.solydarteam.solydar_server.donacion.DetalleDonacion;
-import com.solydarteam.solydar_server.donacion.Donacion;
-import com.solydarteam.solydar_server.donacion.Donador;
-import com.solydarteam.solydar_server.evento.Evento;
-
-import java.util.List;
-
 public class Responsable extends Ciudadano {
 
     public Responsable(String nombre){

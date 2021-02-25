@@ -3,7 +3,7 @@ package com.solydarteam.solydar_server.probar;
 import com.solydarteam.solydar_server.Ciudadano;
 import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
-import com.solydarteam.solydar_server.evento.Evento;
+import com.solydarteam.solydar_server.evento.EventoSimple;
 import com.solydarteam.solydar_server.pedido.DetallePedido;
 import com.solydarteam.solydar_server.pedido.ItemSolicitado;
 import com.solydarteam.solydar_server.pedido.Pedido;
@@ -25,7 +25,7 @@ public class probarDonaciones {
         Ciudadano donante = new Responsable("Daniel");
 
 
-        Evento evento = new Evento();
+        EventoSimple evento = new EventoSimple();
         Pedido pedido = new Pedido();
         pedido.agregarItemAlPedido("alimentos", 2, TipoPedido.TIPO_PRODUCTO, null);
         pedido.agregarItemAlPedido("ropa", 2, TipoPedido.TIPO_PRODUCTO, null);

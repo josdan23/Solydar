@@ -2,7 +2,7 @@ package com.solydarteam.solydar_server.services;
 
 import com.solydarteam.solydar_server.donacion.DetalleDonacion;
 import com.solydarteam.solydar_server.donacion.Donador;
-import com.solydarteam.solydar_server.evento.Evento;
+import com.solydarteam.solydar_server.evento.EventoSimple;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class DonacionServices {
     
     public void donarAEvento(Donador donante,
                              List<DetalleDonacion> listaDeDonativos,
-                             Evento evento) {
+                             EventoSimple evento) {
 
         donante.donar(evento, listaDeDonativos);
 

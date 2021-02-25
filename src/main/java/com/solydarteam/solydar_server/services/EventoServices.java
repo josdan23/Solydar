@@ -3,14 +3,14 @@ package com.solydarteam.solydar_server.services;
 import com.solydarteam.solydar_server.Organizacion;
 import com.solydarteam.solydar_server.Responsable;
 import com.solydarteam.solydar_server.evento.CategoriaEvento;
-import com.solydarteam.solydar_server.evento.Evento;
+import com.solydarteam.solydar_server.evento.EventoSimple;
 import com.solydarteam.solydar_server.pedido.TipoPedido;
 
 import java.util.Date;
 
 public class EventoServices {
 
-    private Evento nuevoEvento;
+    private EventoSimple nuevoEvento;
     private final Organizacion organizacion;
     private final Responsable responsable;
 

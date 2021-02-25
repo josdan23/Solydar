@@ -1,7 +1,7 @@
 package com.solydarteam.solydar_server;
 
 import com.solydarteam.solydar_server.evento.CategoriaEvento;
-import com.solydarteam.solydar_server.evento.Evento;
+import com.solydarteam.solydar_server.evento.EventoSimple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ public class Organizacion {
     private String nombre;
     private CategoriaOrganizacion categoria;
 
-    private List<Evento> misEventos;
+    private List<EventoSimple> misEventos;
     private List<Responsable> administradores;
 
 
@@ -37,11 +37,11 @@ public class Organizacion {
         this.categoria = categoria;
     }
 
-    public List<Evento> getMisEventos() {
+    public List<EventoSimple> getMisEventos() {
         return misEventos;
     }
 
-    public void setMisEventos(List<Evento> misEventos) {
+    public void setMisEventos(List<EventoSimple> misEventos) {
         this.misEventos = misEventos;
     }
 
@@ -82,16 +82,16 @@ public class Organizacion {
         administradores.add(unAdmin);
     }
 
-    public Evento crearNuevoEvento(String titulo,
-                                   String descripcion,
-                                   String aQuienAyuda,
-                                   CategoriaEvento categoriaEvento,
-                                   Date fechaDeRealizacion,
-                                   Responsable responsable) throws Exception {
+    public EventoSimple crearNuevoEvento(String titulo,
+                                         String descripcion,
+                                         String aQuienAyuda,
+                                         CategoriaEvento categoriaEvento,
+                                         Date fechaDeRealizacion,
+                                         Responsable responsable) throws Exception {
 
 
         if (isAdmin(responsable)){
-            Evento nuevoEvento = new Evento();
+            EventoSimple nuevoEvento = new EventoSimple();
             nuevoEvento.setTitulo(titulo);
             nuevoEvento.setDescripcion(descripcion);
             nuevoEvento.setAquienAyuda(aQuienAyuda);
@@ -104,7 +104,7 @@ public class Organizacion {
         throw new Exception("No es responsable de la organización");
     }
 
-    public void registrarEnMisEventos(Evento evento) throws Exception {
+    public void registrarEnMisEventos(EventoSimple evento) throws Exception {
         if (isAdmin(evento.getResponsable()))
             misEventos.add(evento);
         else

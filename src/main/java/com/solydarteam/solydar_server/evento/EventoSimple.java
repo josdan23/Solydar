@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Evento {
+public class EventoSimple {
     private int idEvento;
     private String titulo;
     private String descripcion;
@@ -31,7 +31,7 @@ public class Evento {
     private Pedido pedidoSolicitado;
     private List<Donacion> donacionesRecibidas;
 
-    public Evento(){
+    public EventoSimple(){
         fechaCreacion = Calendar.getInstance().getTime();
         this.telefonos = new ArrayList<>();
         this.donacionesRecibidas = new ArrayList<>();
@@ -242,7 +242,7 @@ public class Evento {
     }
 
     public static void main(String args[]){
-        Evento evento = new Evento();
+        EventoSimple evento = new EventoSimple();
         evento.setIdEvento(2);
         evento.setTitulo("sol para los niños");
         evento.setDescripcion("Evento para conseguir alimentos, ropa y jueguets para los niños");
