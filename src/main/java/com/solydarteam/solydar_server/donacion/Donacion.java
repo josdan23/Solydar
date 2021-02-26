@@ -133,6 +133,10 @@ public class Donacion {
         this.setFechaEntrega(Calendar.getInstance().getTime());
     }
 
+    public void confirmarRecepcion(){
+        this.setEstado(EstadoDonacion.DONACION_CONFIRMADA);
+    }
+
     /*public static void main(String[] args){
        EspecificacionDePedido producto = new EspecificacionDePedido("Alimentos");
         Donacion donacion = new Donacion();
