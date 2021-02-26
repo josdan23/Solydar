@@ -129,8 +129,8 @@ public class Donacion {
     }
 
     public void entregada() {
-        this.setEstado(EstadoDonacion.DONACION_CONFIRMADA);
-        this.setfechaCreacion(Calendar.getInstance().getTime());
+        this.setEstado(EstadoDonacion.DONACION_ENTREGADA);
+        this.setFechaEntrega(Calendar.getInstance().getTime());
     }
 
     /*public static void main(String[] args){
