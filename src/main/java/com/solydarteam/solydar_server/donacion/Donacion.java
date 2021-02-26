@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Donacion {
     private int idDonacion;
-    private int codigoDonacion;
+    private long codigoDonacion;
     private Date fechaCreacion;
     private EstadoDonacion estado;
     private Date fechaEntrega;
@@ -29,11 +29,11 @@ public class Donacion {
 
     //<editor-fold desc="GETTERS AND SETTERS">
 
-    public int getCodigoDonacion() {
+    public long getCodigoDonacion() {
         return codigoDonacion;
     }
 
-    public void setCodigoDonacion(int codigoDonacion) {
+    public void setCodigoDonacion(long codigoDonacion) {
         this.codigoDonacion = codigoDonacion;
     }
 
@@ -126,6 +126,11 @@ public class Donacion {
 
         builder.append("\n\n\t|------->FIN DETALLE DE DONACIÓN<-------");
         return builder.toString();
+    }
+
+    public void entregada() {
+        this.setEstado(EstadoDonacion.DONACION_CONFIRMADA);
+        this.setfechaCreacion(Calendar.getInstance().getTime());
     }
 
     /*public static void main(String[] args){
